@@ -112,8 +112,6 @@ export const AIModelToGenerateNotes = async (CoachingOption, conversation) => {
 
 // IBM Watson TTS function remains the same
 
-const API_KEY='BktVHDHQWpS9nAnAaLb_wAXjf8E9rjjRv4LJsYf82h9g'; 
-const SERVICE_URL='https://api.au-syd.text-to-speech.watson.cloud.ibm.com/instances/d9e9320d-81cd-4ce3-a4f5-6b09e84f3e5b';
 
 export const playAssistantSpeech = async (text) => {
     try {
