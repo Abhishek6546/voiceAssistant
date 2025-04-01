@@ -1,102 +1,117 @@
+'use client'
+import { Button } from "@/components/ui/button";
+import { UserButton, useUser } from "@stackframe/stack";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
+  const user = useUser()
+  console.log(user)
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div>
+      {/* Navigation Bar */}
+      <nav className="flex  justify-between items-center px-2 md:px-6 py-4 bg-gray-200 shadow-md">
+        {/* Logo */}
+        <div className="text-2xl font-bold text-primary hover:text-blue-600 transition duration-300">
+          <Image src={'/logo.webp'} alt={'logo'} width={50} height={40} className="rounded-full" />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+        {/* Navigation Links and User Button */}
+        <div className="flex items-center gap-6">
+          <Link href="/dashboard" className="text-gray-700 hover:text-blue-600 font-medium transition duration-300">
+            Dashboard
+          </Link>
+          <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium transition duration-300">
+            About
+          </Link>
+          <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium transition duration-300">
+            Contact
+          </Link>
+          <UserButton />
+        </div>
+      </nav>
+      {/* Hero Section */}
+      <section className="flex md:pt-[40px] flex-col md:flex-row items-center justify-between h-full  bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 md:px-16">
+        {/* Text Content */}
+        <div className="text-center md:text-left md:w-1/2 animate-fade-in max-md:mt-[30px]">
+          <h1 className=" text-2xl md:text-5xl font-bold mb-2 md:mb-4">Welcome to Voice Assistant</h1>
+          <p className=" text-md md:text-lg mb-6">
+            Your personal AI-powered assistant for learning and productivity.
+          </p>
+          <div className="flex flex-row justify-center gap-4">
+            <Link href={'/dashboard'}>
+              <Button className="bg-white text-blue-600 hover:bg-gray-200 transition duration-300 transform hover:scale-105">
+                Get Started
+              </Button></Link>
+            <Button className="bg-transparent border border-white text-white hover:bg-white hover:text-blue-600 transition duration-300 transform hover:scale-105">
+              Watch Demo
+            </Button>
+          </div>
+        </div>
+
+        {/* Image or Illustration */}
+        <div className="mt-8 md:mt-0 md:w-1/2 animate-fade-in-delay mb-[30px]">
+          <Image src={'/hero.jpg'} alt={'hero'} width={200} height={400} className="w-[700px] h-[400px] rounded-lg  hover:scale-105 transition-all" />
+        </div>
+      </section>
+
+
+
+      {/* Features Section */}
+      <section className="py-16 bg-gray-50 text-center">
+        <h2 className="text-3xl font-bold mb-8">Features</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
+          <div className="p-6 bg-white shadow-md rounded-lg hover:shadow-lg transition duration-300 transform hover:scale-105">
+            <h3 className="text-xl font-bold mb-4">AI-Powered Assistance</h3>
+            <p>Get personalized help with learning and productivity using cutting-edge AI technology.</p>
+          </div>
+          <div className="p-6 bg-white shadow-md rounded-lg hover:shadow-lg transition duration-300 transform hover:scale-105">
+            <h3 className="text-xl font-bold mb-4">Real-Time Speech Recognition</h3>
+            <p>Interact with your assistant using voice commands for a seamless experience.</p>
+          </div>
+          <div className="p-6 bg-white shadow-md rounded-lg hover:shadow-lg transition duration-300 transform hover:scale-105">
+            <h3 className="text-xl font-bold mb-4">Customizable Plans</h3>
+            <p>Choose from free and paid plans to suit your needs and unlock advanced features.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 bg-white text-center">
+        <h2 className="text-3xl font-bold mb-8">What Our Users Say</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
+          <div className="p-6 bg-gray-50 shadow-md rounded-lg hover:shadow-lg transition duration-300 transform hover:scale-105">
+            <p className="italic">"Voice Assistant has transformed the way I learn. Highly recommended!"</p>
+            <h4 className="mt-4 font-bold">- Alex Johnson</h4>
+          </div>
+          <div className="p-6 bg-gray-50 shadow-md rounded-lg hover:shadow-lg transition duration-300 transform hover:scale-105">
+            <p className="italic">"The real-time speech recognition is amazing. It's like having a personal tutor."</p>
+            <h4 className="mt-4 font-bold">- Sarah Lee</h4>
+          </div>
+          <div className="p-6 bg-gray-50 shadow-md rounded-lg hover:shadow-lg transition duration-300 transform hover:scale-105">
+            <p className="italic">"I love the customizable plans. The paid plan is worth every penny!"</p>
+            <h4 className="mt-4 font-bold">- Michael Brown</h4>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="py-16 bg-gradient-to-r from-purple-600 to-blue-500 text-white text-center">
+        <h2 className="text-3xl font-bold mb-4 animate-fade-in">Ready to Get Started?</h2>
+        <p className="text-lg mb-6 animate-fade-in-delay">Join thousands of users who are boosting their productivity with Voice Assistant.</p>
+        <Link href={'/dashboard'}>
+          {
+            !user ? <Button className="bg-white text-blue-600 hover:bg-gray-200 transition duration-300 transform hover:scale-105">
+              Sign Up Now
+            </Button> : <Button className="bg-white text-blue-600 hover:bg-gray-200 transition duration-300 transform hover:scale-105">
+              Explore
+            </Button>
+          }</Link>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-100 py-4 text-center text-gray-600">
+        © 2025 Voice Assistant. All rights reserved.
       </footer>
     </div>
   );
